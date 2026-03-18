@@ -9,7 +9,7 @@ body {
   width: 100vw;
   top: 0;
   left: 0;
-  background-color: rgba(138, 128, 128, 0.5);
+  background-color: rgba(121, 153, 225, 0.393);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -61,7 +61,7 @@ body {
   right: 1rem;
 }
 
-.nav__hamburger__line {
+.nav__hamburger-line {
   height: 0.188rem;
   width: 100%;
   background-color: #fff;
@@ -105,15 +105,15 @@ body {
   .nav__menu.active {
     top: 0;
   }
-  .nav__hamburger.active :nth-child(1) {
+  .nav__hamburger.active .nav__hamburger-line:nth-child(1) {
     transform: rotate(45deg) translate(0.45rem, 0.1875rem);
   }
 
-  .nav__hamburger.active :nth-child(2) {
+  .nav__hamburger.active .nav__hamburger-line:nth-child(2) {
     opacity: 0;
   }
 
-  .nav__hamburger.active :nth-child(3) {
+  .nav__hamburger.active .nav__hamburger-line:nth-child(3) {
     transform: rotate(-45deg) translate(0.45rem, -0.1875rem);
   }
 }

@@ -13,7 +13,7 @@ window.addEventListener("resize", () => {
   }
 });
 
-if (window.matchMedia("(max-witdh: 550px").matches) {
+if (window.matchMedia("(max-width: 550px)").matches) {
   closeMenu();
 }
 
