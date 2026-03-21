@@ -1,35 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusDev</title>
-    <link rel="stylesheet" href="campusDev.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.jpg">
+  <title>CampusDev</title>
+  <link rel="stylesheet" href="campusDev.css">
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav__logo">Logo</div>
-        <a href="#" class="nav__hamburger">
-            <span class="nav__hamburger-line"></span>
-            <span class="nav__hamburger-line"></span>
-            <span class="nav__hamburger-line"></span>
-        </a>
-        <div class="nav__menu">
-            <ul>
-                <li class="nav__menu__link"><a href="#home">Home</a></li>
-                <li class="nav__menu__link"><a href="#about">About</a></li>
-                <li class="nav__menu__link"><a href="#contact">Contact</a></li>
-            </ul>
-         </div>
-    </nav>
-    <div class="bg"></div>
-    <h1><strong>Welcome to CampusDev Beta</strong></h1>
 
-    <div>
-        <h3>About CampusDev</h3>
-        <p>CampusDev is a platform for students to share their projects and collaborate with each other. 
-            We are currently in beta, so we would love to hear your feedback!</p>
+  <div class="bg"></div>
+
+  <header class="header">
+    <div class="nav__logo">
+      <img src="logo.jpg" alt="CampusDev Logo">
     </div>
-    <script src="script.js"></script>
+
+    <h1>CampusDev Beta</h1>
+
+    <div class="nav__hamburger">
+      <span class="nav__hamburger-line"></span>
+      <span class="nav__hamburger-line"></span>
+      <span class="nav__hamburger-line"></span>
+    </div>
+  </header>
+
+  <nav class="nav__menu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <main>
+      <div class="main__content">
+        <h2>About CampusDev</h2>
+        <p>
+          CampusDev is a platform for students to share projects and collaborate.
+        </p>
+      </div>
+    </main>
+
+    <aside>
+      <h3>Contact</h3>
+      <p>Email: <a href="mailto:s243048@stud.uni-ruse.bg">s243048@stud.uni-ruse.bg</a></p>
+    </aside>
+  </div>
+
+  <footer>
+    <p>© 2026 CampusDev</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

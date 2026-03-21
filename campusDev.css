@@ -1,119 +1,166 @@
 body {
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  overflow-x: hidden; /* Предотвратява хоризонтален скрол при анимации */
 }
 
+/* BACKGROUND */
 .bg {
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(121, 153, 225, 0.393);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  z-index: -2;
+  width: 100%;
+  height: 100%;
+  background: rgba(121, 153, 225, 0.3);
+  z-index: -1;
 }
 
-.nav {
-  height: 3.2rem;
+/* HEADER */
+.header {
+  height: 80px; /* Фиксирана височина за стабилност */
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  color: #fff;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1000; /* Винаги над менюто */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.nav__logo {
-  font-size: 1.5rem;
-  margin: auto 1rem;
-}
-
-.nav__menu ul {
+.header h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
-  padding: 0;
-  display: flex;
+  font-size: 1.5rem;
+  color: #333;
 }
 
-.nav__menu ul li {
-  list-style: none;
-}
-
-.nav__menu ul li a {
-  text-decoration: none;
-  color: #fff;
-  padding: 1rem;
+/* LOGO */
+.nav__logo img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
   display: block;
 }
 
-.nav__menu li:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+/* 🚀 NAV MENU (Premium Smooth Effect) */
+.nav__menu {
+  position: absolute;
+  top: 80px; /* Трябва да съвпада с височината на .header */
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px); /* Модерен стъклен ефект */
+  z-index: 999;
+  
+  /* Анимационни настройки */
+  max-height: 0;           /* Свито състояние */
+  opacity: 0;              /* Невидимо */
+  overflow: hidden;        /* Крие текста вътре */
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s ease;
 }
 
+/* Активно състояние (през JS или Hover на Desktop) */
+.nav__menu.active,
+.header:hover + .nav__menu, /* Магия: когато минеш с мишка над хедъра, менюто под него се отваря */
+.nav__menu:hover {
+  max-height: 500px; /* Достатъчно, за да побере всичко */
+  opacity: 1;
+}
+
+.nav__menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column; /* По-добре за smooth ефекта */
+  align-items: center;
+  gap: 15px;
+}
+
+.nav__menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav__menu a:hover {
+  color: #7999e1;
+}
+
+/* HAMBURGER */
 .nav__hamburger {
-  width: 1.875rem;
-  height: 1.313rem;
   display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 .nav__hamburger-line {
-  height: 0.188rem;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 0.625rem;
-  transition: all ease-in-out 0.2s;
+  width: 30px;
+  height: 3px;
+  background: #333;
+  margin: 6px 0;
+  transition: 0.3s;
 }
 
-/* MEDIA QUERIES */
+/* CONTAINER & CONTENT */
+.container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-@media screen and (max-width: 550px) {
+main, aside {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: #888;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+/* 📱 MOBILE OPTIMIZATION */
+@media (max-width: 800px) {
+  .header h1 {
+    font-size: 1.2rem;
+    /* Оставяме го центрирано, но ако пречи на логото, може да се махне */
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Показваме хамбургера */
   .nav__hamburger {
-    display: flex;
-  }
-  .nav__menu {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.2);
-    top: -10rem;
-    width: 100%;
-    transition: all ease-in-out 0.4s;
-  }
-  .nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .nav__menu ul {
-    flex-direction: column;
-    width: 100%;
-    padding: 3rem 0 0.6rem;
-  }
-  .nav__menu ul li {
-    text-align: center;
-  }
-  .nav__menu ul li a {
-    padding: 0.5rem;
-  }
-  .nav__menu {
-    z-index: -1;
-  }
-  .nav__menu.active {
-    top: 0;
-  }
-  .nav__hamburger.active .nav__hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(0.45rem, 0.1875rem);
+    display: block;
   }
 
-  .nav__hamburger.active .nav__hamburger-line:nth-child(2) {
+  /* Изключваме ховър ефекта за мобилни, за да не се бъгва при докосване */
+  .header:hover + .nav__menu {
+    max-height: 0;
     opacity: 0;
   }
 
-  .nav__hamburger.active .nav__hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(0.45rem, -0.1875rem);
+  /* Само .active класът отваря менюто тук */
+  .nav__menu.active {
+    max-height: 100vh; /* Заема целия екран на мобилни */
+    opacity: 1;
   }
 }
