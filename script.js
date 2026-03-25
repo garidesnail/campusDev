@@ -1,42 +1,97 @@
-const hamburger = document.querySelector(".nav__hamburger");
+
 const menu = document.querySelector(".nav__menu");
 const links = document.querySelectorAll(".nav__menu a");
 
-// 1. Toggle Menu (Mobile)
-hamburger.addEventListener("click", (e) => {
-  e.stopPropagation(); // Предотвратява затварянето от document listener-а веднага
-  
-  // Добавяме/Премахваме клас 'active' - CSS ще се погрижи за плавната анимация
-  hamburger.classList.toggle("active");
-  menu.classList.toggle("active");
-});
-
-// 2. Автоматично затваряне при избор на линк (UX стандарт)
-links.forEach(link => {
-  link.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    menu.classList.remove("active");
-  });
-});
-
-// 3. Затваряне при клик някъде извън менюто или хедъра
-document.addEventListener("click", (e) => {
-  const isClickInsideMenu = menu.contains(e.target);
-  const isClickOnHamburger = hamburger.contains(e.target);
-
-  if (!isClickInsideMenu && !isClickOnHamburger && menu.classList.contains("active")) {
-    hamburger.classList.remove("active");
-    menu.classList.remove("active");
-  }
-});
-
-// 4. Reset при промяна на размера на прозореца
-// Това гарантира, че ако разпънеш браузъра, менюто няма да остане в "бъгнато" състояние
 window.addEventListener("resize", () => {
   if (window.innerWidth > 800) {
-    if (menu.classList.contains("active")) {
-      hamburger.classList.remove("active");
-      menu.classList.remove("active");
-    }
+    hamburger.classList.remove("active");
+    menu.classList.remove("active");
   }
 });
+
+gsap.registerPlugin(ScrollTrigger);
+
+const scrollContainer = document.querySelector(".scroll-container");
+
+if (scrollContainer) {
+
+  const scroller = new LocomotiveScroll({
+    el: scrollContainer,
+    smooth: true
+  });
+
+  scroller.on("scroll", ScrollTrigger.update);
+
+  ScrollTrigger.scrollerProxy(scrollContainer, {
+    scrollTop(value) {
+      return arguments.length
+        ? scroller.scrollTo(value, 0, 0)
+        : scroller.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight
+      };
+    }
+  });
+
+  ScrollTrigger.addEventListener("refresh", () => scroller.update());
+  ScrollTrigger.refresh();
+
+ 
+  const sections = scrollContainer.querySelectorAll("section");
+
+  sections.forEach((section, i) => {
+
+    const prevBg = i === 0 ? "#ffffff" : sections[i - 1].dataset.bgcolor;
+    const prevText = i === 0 ? "#000000" : sections[i - 1].dataset.textcolor;
+
+    ScrollTrigger.create({
+      trigger: section,
+      scroller: scrollContainer,
+      start: "top 80%",
+      end: "bottom 20%",
+      scrub: true,
+
+      onEnter: () => {
+        gsap.to("body", {
+          backgroundColor: section.dataset.bgcolor,
+          color: section.dataset.textcolor,
+          duration: 0.6,
+          overwrite: "auto"
+        });
+      },
+
+      onLeaveBack: () => {
+        gsap.to("body", {
+          backgroundColor: prevBg,
+          color: prevText,
+          duration: 0.6,
+          overwrite: "auto"
+        });
+      }
+    });
+
+    gsap.from(section.children, {
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: section,
+        scroller: scrollContainer,
+        start: "top 85%"
+      }
+    });
+
+  });
+
+  
+  window.addEventListener("resize", () => {
+    scroller.update();
+    ScrollTrigger.refresh();
+  });
+}

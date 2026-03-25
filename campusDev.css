@@ -1,7 +1,8 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  overflow-x: hidden; /* Предотвратява хоризонтален скрол при анимации */
+  overflow-x: hidden; 
+  transition: background-color 0.6s ease, color 0.6s ease;
 }
 
 /* BACKGROUND */
@@ -45,14 +46,14 @@ body {
   display: block;
 }
 
-/* 🚀 NAV MENU (Premium Smooth Effect) */
+/* Smooth Effect */
 .nav__menu {
   position: absolute;
-  top: 80px; /* Трябва да съвпада с височината на .header */
+  top: 80px; 
   left: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(8px); /* Модерен стъклен ефект */
+  backdrop-filter: blur(8px); 
   z-index: 999;
   
   /* Анимационни настройки */
@@ -63,11 +64,11 @@ body {
               opacity 0.3s ease;
 }
 
-/* Активно състояние (през JS или Hover на Desktop) */
+/* Активно състояние  */
 .nav__menu.active,
-.header:hover + .nav__menu, /* Магия: когато минеш с мишка над хедъра, менюто под него се отваря */
+.header:hover + .nav__menu, 
 .nav__menu:hover {
-  max-height: 500px; /* Достатъчно, за да побере всичко */
+  max-height: 500px; 
   opacity: 1;
 }
 
@@ -76,7 +77,7 @@ body {
   margin: 0;
   padding: 20px 0;
   display: flex;
-  flex-direction: column; /* По-добре за smooth ефекта */
+  flex-direction: row; 
   align-items: center;
   gap: 15px;
 }
@@ -95,22 +96,7 @@ body {
   color: #7999e1;
 }
 
-/* HAMBURGER */
-.nav__hamburger {
-  display: none;
-  cursor: pointer;
-  z-index: 1001;
-}
 
-.nav__hamburger-line {
-  width: 30px;
-  height: 3px;
-  background: #333;
-  margin: 6px 0;
-  transition: 0.3s;
-}
-
-/* CONTAINER & CONTENT */
 .container {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -121,7 +107,7 @@ body {
 }
 
 main, aside {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(152, 179, 237, 0.8);
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -140,27 +126,72 @@ footer {
 @media (max-width: 800px) {
   .header h1 {
     font-size: 1.2rem;
-    /* Оставяме го центрирано, но ако пречи на логото, може да се махне */
+    
   }
 
   .container {
     grid-template-columns: 1fr;
   }
-
-  /* Показваме хамбургера */
-  .nav__hamburger {
-    display: block;
-  }
-
-  /* Изключваме ховър ефекта за мобилни, за да не се бъгва при докосване */
+  
   .header:hover + .nav__menu {
     max-height: 0;
     opacity: 0;
   }
 
-  /* Само .active класът отваря менюто тук */
+  
   .nav__menu.active {
-    max-height: 100vh; /* Заема целия екран на мобилни */
+    max-height: 100vh; 
     opacity: 1;
+  }
+}
+
+.scroll-container {
+  position: relative;
+}
+
+
+.scroll-container section {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 80px 10%;
+  transition: background 0.3s ease;
+}
+
+
+.scroll-container h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.scroll-container h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* снимки */
+.scroll-container img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+@media (max-width: 800px) {
+  .scroll-container section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .scroll-container h1 {
+    font-size: 2rem;
+  }
+
+  .scroll-container h2 {
+    font-size: 1.5rem;
   }
 }
