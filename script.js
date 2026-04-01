@@ -1,11 +1,11 @@
-
-const menu = document.querySelector(".nav__menu");
-const links = document.querySelectorAll(".nav__menu a");
+const navMenu = document.querySelector(".nav__menu");
+const navLinks = document.querySelectorAll(".nav__menu a");
+const navToggle = document.querySelector(".nav__toggle"); // optional toggle control if added later
 
 window.addEventListener("resize", () => {
   if (window.innerWidth > 800) {
-    hamburger.classList.remove("active");
-    menu.classList.remove("active");
+    if (navToggle) navToggle.classList.remove("active");
+    if (navMenu) navMenu.classList.remove("active");
   }
 });
 
@@ -52,11 +52,16 @@ if (scrollContainer) {
     ScrollTrigger.create({
       trigger: section,
       scroller: scrollContainer,
-      start: "top 80%",
-      end: "bottom 20%",
+      start: "top center",
+      end: "bottom center",
       scrub: true,
 
       onEnter: () => {
+        gsap.to(".bg", {
+          backgroundColor: section.dataset.bgcolor,
+          duration: 0.6,
+          overwrite: "auto"
+        });
         gsap.to("body", {
           backgroundColor: section.dataset.bgcolor,
           color: section.dataset.textcolor,
@@ -66,6 +71,11 @@ if (scrollContainer) {
       },
 
       onLeaveBack: () => {
+        gsap.to(".bg", {
+          backgroundColor: prevBg,
+          duration: 0.6,
+          overwrite: "auto"
+        });
         gsap.to("body", {
           backgroundColor: prevBg,
           color: prevText,
