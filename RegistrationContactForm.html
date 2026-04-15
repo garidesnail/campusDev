@@ -4,63 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: ;
-        }
-        form {
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ba0101;
-            border-radius: 1rem;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 80%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #910000;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: rgb(0, 0, 0);
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        </style>
+    <link rel="stylesheet" href="RegistrationContactForm.css">
 </head>
 <body>
 <div>
     <h1>Registration</h1>
     <form id="registerForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
+        <div class="field-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
 
-        <label for="fNumber">Faculty Number:</label>
-        <input type="text" id="fNumber" name="fNumber" required><br><br>
+        <div class="field-group">
+            <label for="fNumber">Faculty Number</label>
+            <input type="text" id="fNumber" name="fNumber" required>
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <div class="field-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <div class="field-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
 
         <button type="submit">Send</button>
     </form>
+    <p class="signin-link">Already have an account? <a href="LoginContactForm.html">Sign in</a></p>
 </div>
 
 
