@@ -24,60 +24,73 @@
       <img src="logo.jpg" alt="CampusDev Logo">
     </div>
 
-    <h1>CampusDev Beta</h1>
+    <h1 data-i18n="header-title">CampusDev Beta</h1>
 
+    <!-- Language Switch Button -->
+    <div class="language-switch-container">
+      <label class="switch-button" for="switch">
+        <div class="switch-outer">
+          <input id="switch" type="checkbox">
+          <div class="button">
+            <span class="button-toggle"></span>
+            <span class="button-indicator"></span>
+          </div>
+        </div>
+      </label>
+      <span class="language-label">ENG/BG</span>
+    </div>
   </header>
 
   <!-- NAV -->
   <nav class="nav__menu">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Forums</a></li>
-      <li><a href="#">Kafeto</a></li>
-      <li><a href="RegistrationContactForm.html">Login/Sign Up</a></li>
+      <li><a href="index.html" data-i18n="home-link">Home</a></li>
+      <li><a href="forums.html" data-i18n="forums-link">Forums</a></li>
+      <li><a href="kafeto.html" data-i18n="kafeto-link">Kafeto</a></li>
+      <li><a href="RegistrationContactForm.html" data-i18n="login-link">Login/Sign Up</a></li>
     </ul>
   </nav>
 
   <div class="scroll-container"> 
 
     <section data-bgcolor="#1a1a2e" data-textcolor="#ffffff">
-      <h1>Welcome to CampusDev</h1>
+      <h1 data-i18n="welcome-heading">Welcome to CampusDev</h1>
       <img src="images/img1.jpg" alt="">
     </section>
 
     <section data-bgcolor="#163a5f" data-textcolor="#ffd36f">
-      <h2>Features</h2>
-      <p>Project feed, study groups, forums, challenge rooms.</p>
+      <h2 data-i18n="features-heading">Features</h2>
+      <p data-i18n="features-text">Project feed, study groups, forums, challenge rooms.</p>
       <img src="images/img2.jpg" alt="">
     </section>
 
     <section data-bgcolor="#275b8a" data-textcolor="#fff">
-      <h2>Community</h2>
-      <p>Network with students & build better together.</p>
+      <h2 data-i18n="community-heading">Community</h2>
+      <p data-i18n="community-text">Network with students & build better together.</p>
       <img src="images/img3.jpg" alt="">
     </section>
 
     <div class="container">
     <main>
       <div class="main__content">
-        <h2>About CampusDev</h2>
-        <p>
+        <h2 data-i18n="about-heading">About CampusDev</h2>
+        <p data-i18n="about-text">
           CampusDev is a platform for students to share projects and collaborate.
         </p>
       </div>
     </main>
 
     <aside>
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:s243048@stud.uni-ruse.bg">s243048@stud.uni-ruse.bg</a></p>
+      <h3 data-i18n="contact-heading">Contact</h3>
+      <p><span data-i18n="contact-email">Email: </span><a href="mailto:s243048@stud.uni-ruse.bg">s243048@stud.uni-ruse.bg</a></p>
     </aside>
   </div>
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p>© 2026 CampusDev. All rights reserved.</p>
-      <p>Built by students for students. <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Support</a></p>
-      <p>Follow us on <a href="#">Twitter</a>, <a href="#">GitHub</a>, <a href="#">LinkedIn</a>.</p>
+      <p><span data-i18n="footer-copyright">© 2026 CampusDev. All rights reserved.</span></p>
+      <p><span data-i18n="footer-mission">Built by students for students.</span> <a href="#" data-i18n="privacy-link">Privacy</a> · <a href="#" data-i18n="terms-link">Terms</a> · <a href="#" data-i18n="support-link">Support</a></p>
+      <p><span data-i18n="footer-social">Follow us on</span> <a href="#" data-i18n="twitter-link">Twitter</a>, <a href="#" data-i18n="github-link">GitHub</a>, <a href="#" data-i18n="linkedin-link">LinkedIn</a>.</p>
     </div>
   </footer>
 
