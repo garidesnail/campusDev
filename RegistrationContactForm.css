@@ -10,6 +10,25 @@ body {
     padding: 40px 20px;
 }
 
+.registration-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.registration-container.loading h1,
+.registration-container.loading form,
+.registration-container.loading .signin-link {
+    display: none;
+}
+
+.registration-container.loading {
+    min-height: 100vh;
+    justify-content: center;
+}
+
 h1 {
     color: #f4f7ff;
     text-align: center;
@@ -112,11 +131,145 @@ button:active {
     text-decoration: underline;
 }
 
+/* Role Selector Styles */
+.role-selector {
+    margin-bottom: 24px !important;
+}
+
+.role-selector label:first-child {
+    display: block;
+    margin-bottom: 12px;
+    color: #d9e6ff;
+    font-size: 0.98rem;
+    font-weight: 600;
+}
+
+/* Radio Input Checkbox Styles */
+.radio-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 2em;
+    height: 2em;
+}
+
+.radio-input input {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.14);
+    border-radius: 5px;
+    transition: .4s ease-in-out;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+.radio-input input:hover {
+    scale: 1.2;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(97, 146, 255, 0.3);
+    border-color: rgba(97, 146, 255, 0.5);
+}
+
+.radio-input .check-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #5f81ff;
+    font-size: 1.2em;
+    font-weight: bold;
+    opacity: 0;
+    transition: .4s ease-in-out;
+    pointer-events: none;
+}
+
+.radio-input input:checked ~ .check-mark {
+    opacity: 1;
+}
+
 @media (max-width: 480px) {
     body {
         padding: 24px 12px;
     }
     form {
         padding: 24px 20px;
+    }
+}
+
+/* Loader Animation */
+.loader {
+    position: relative;
+    width: 120px;
+    height: 90px;
+    margin: 0 auto;
+    display: none;
+}
+
+.loader.show {
+    display: block;
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: #2a9d8f;
+    animation: loading-bounce 0.5s ease-in-out infinite alternate;
+}
+
+.loader:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 7px;
+    width: 45px;
+    border-radius: 4px;
+    box-shadow: 0 5px 0 #f2f2f2, -35px 50px 0 #f2f2f2, -70px 95px 0 #f2f2f2;
+    animation: loading-step 1s ease-in-out infinite;
+}
+
+@keyframes loading-bounce {
+    0% {
+        transform: scale(1, 0.7);
+    }
+
+    40% {
+        transform: scale(0.8, 1.2);
+    }
+
+    60% {
+        transform: scale(1, 1);
+    }
+
+    100% {
+        bottom: 140px;
+    }
+}
+
+@keyframes loading-step {
+    0% {
+        box-shadow: 0 10px 0 rgba(0, 0, 0, 0),
+                0 10px 0 #f2f2f2,
+                -35px 50px 0 #f2f2f2,
+                -70px 90px 0 #f2f2f2;
+    }
+
+    100% {
+        box-shadow: 0 10px 0 #f2f2f2,
+                -35px 50px 0 #f2f2f2,
+                -70px 90px 0 #f2f2f2,
+                -70px 90px 0 rgba(0, 0, 0, 0);
     }
 }

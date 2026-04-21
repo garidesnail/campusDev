@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="RegistrationContactForm.css">
 </head>
 <body>
-<div>
+<div class="registration-container">
     <h1>Registration</h1>
     <form id="registerForm">
         <div class="field-group">
@@ -15,7 +15,29 @@
             <input type="text" id="username" name="username" required>
         </div>
 
-        <div class="field-group">
+        <!-- Role Selection Toggle -->
+        <div class="field-group role-selector">
+            <label>I am a:</label>
+            <div style="display: flex; gap: 30px; justify-content: center; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="radio-input">
+                        <input type="radio" id="student-role" name="role" value="student" checked>
+                        <span class="check-mark">X</span>
+                    </div>
+                    <label for="student-role" style="cursor: pointer; color: #d9e6ff;">Student</label>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="radio-input">
+                        <input type="radio" id="teacher-role" name="role" value="teacher">
+                        <span class="check-mark">X</span>
+                    </div>
+                    <label for="teacher-role" style="cursor: pointer; color: #d9e6ff;">Professor</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="field-group" id="faculty-number-group">
             <label for="fNumber">Faculty Number</label>
             <input type="text" id="fNumber" name="fNumber" required>
         </div>
@@ -32,9 +54,48 @@
 
         <button type="submit">Send</button>
     </form>
+    <div class="loader" id="loader"></div>
     <p class="signin-link">Already have an account? <a href="LoginContactForm.html">Sign in</a></p>
 </div>
 
+<script>
+    // Handle role selection toggle
+    const studentRadio = document.getElementById('student-role');
+    const teacherRadio = document.getElementById('teacher-role');
+    const facultyNumberGroup = document.getElementById('faculty-number-group');
+    const facultyNumberInput = document.getElementById('fNumber');
+
+    function toggleFacultyNumber() {
+        if (studentRadio.checked) {
+            facultyNumberGroup.style.display = 'block';
+            facultyNumberInput.required = true;
+        } else {
+            facultyNumberGroup.style.display = 'none';
+            facultyNumberInput.required = false;
+            facultyNumberInput.value = '';
+        }
+    }
+
+    studentRadio.addEventListener('change', toggleFacultyNumber);
+    teacherRadio.addEventListener('change', toggleFacultyNumber);
+
+    // Form submit handler
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Hide form and show only loader
+        const container = document.querySelector('.registration-container');
+        container.classList.add('loading');
+        
+        // Show loader
+        document.getElementById('loader').classList.add('show');
+        
+        // Simulate registration delay and redirect to home page
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 2000);
+    });
+</script>
 
 </body>
 </html>

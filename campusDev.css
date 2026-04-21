@@ -1,7 +1,7 @@
 :root {
   --dominant: #0f1419; /* 60% - Dark base */
   --secondary: #1e3a5f; /* 30% - Medium blue */
-  --accent: #ff4757; /* 10% - Bright red accent */
+  --accent: #47b8ff; /* 10% - Bright accent */
   --nav-bg: rgba(30, 58, 95, 0.95);
   --nav-text: #ffffff;
   --page-bg: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
