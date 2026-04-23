@@ -12,6 +12,140 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
+  <style>
+    .specialties-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .specialty-item {
+      background: var(--secondary);
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid var(--card-border);
+    }
+    .specialty-item:hover {
+      background: var(--accent);
+      color: var(--dominant);
+      transform: translateY(-3px);
+    }
+    .details-box {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      border-left: 4px solid var(--accent);
+    }
+    .discipline-card {
+      background: var(--card-bg);
+      margin: 10px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .discipline-header {
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    .discipline-header:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .discipline-content {
+      display: none;
+      padding: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .rating-system {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      padding-top: 15px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+    .rating-item {
+      background: rgba(0,0,0,0.2);
+      padding: 8px;
+      border-radius: 5px;
+    }
+    .stars { color: #ffd700; }
+    .discipline-links {
+      display: flex;
+      gap: 15px;
+      margin: 15px 0;
+    }
+    .btn-link {
+      padding: 8px 15px;
+      background: var(--secondary);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      transition: background 0.3s;
+    }
+    .btn-link:hover { background: var(--accent); color: var(--dominant); }
+
+    .anonymous-form {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+    .anonymous-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid var(--card-border);
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--text-main);
+      resize: vertical;
+      min-height: 100px;
+      margin-top: 10px;
+    }
+    .anonymous-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .anonymous-form .btn-link {
+      margin-top: 15px;
+      display: inline-block; /* To make btn-link styles apply correctly */
+    }
+    .form-status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: rgba(0, 128, 0, 0.3);
+      color: #aaffaa;
+      display: none;
+    }
+    .info-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+  </style>
 </head>
 <body>
 
@@ -50,5 +184,339 @@
     </ul>
   </nav>
 
+  <div class="container">
+    <main>
+      <!-- СЕКЦИЯ: ФАКУЛТЕТ ЕЕА -->
+      <section class="forum-section">
+        <div class="info-card">
+          <h2 data-i18n="faculty-eea-title">Факултет Електротехника, електроника и автоматика</h2>
+          <p data-i18n="faculty-eea-info">
+            Добре дошли във форума на факултет ЕЕА. Тук можете да намерите информация за учебния процес, 
+            проекти и дискусии, свързани със съвременните технологии и инженерните науки.
+          </p>
+        </div>
+        
+        <h3 data-i18n="specialties-title">Специалности:</h3>
+        <ul class="specialties-list">
+          <li class="specialty-item" onclick="showDetails('spec-imk')" data-i18n="spec-imk">ИНТЕРНЕТ И МОБИЛНИ КОМУНИКАЦИИ</li>
+          <li class="specialty-item" onclick="showDetails('spec-kst')" data-i18n="spec-kst">КОМПЮТЪРНИ СИСТЕМИ И ТЕХНОЛОГИИ</li>
+          <li class="specialty-item" onclick="showDetails('spec-el')" data-i18n="spec-el">ЕЛЕКТРОНИКА</li>
+          <li class="specialty-item" onclick="showDetails('spec-kua')" data-i18n="spec-kua">КОМПЮТЪРНО УПРАВЛЕНИЕ И АВТОМАТИЗАЦИЯ</li>
+          <li class="specialty-item" onclick="showDetails('spec-eee')" data-i18n="spec-eee">ЕЛЕКТРОЕНЕРГЕТИКА И ЕЛЕКТРООБЗАВЕЖДАНЕ</li>
+        </ul>
+      </section>
+
+      <!-- СЕКЦИЯ: ФАКУЛТЕТ АИФ -->
+      <section class="forum-section" style="margin-top: 50px;">
+        <div class="info-card">
+          <h2 data-i18n="faculty-aif-title">Аграрно-индустриален факултет</h2>
+          <p data-i18n="faculty-aif-info">
+            Форум на Аграрно-индустриалния факултет. Фокус върху земеделска техника, дизайн и екологично инженерство.
+          </p>
+        </div>
+
+        <h3 data-i18n="specialties-title">Специалности:</h3>
+        <ul class="specialties-list">
+          <li class="specialty-item" onclick="showDetails('spec-design')" data-i18n="spec-design">Промишлен дизайн</li>
+          <li class="specialty-item" onclick="showDetails('spec-ztt')" data-i18n="spec-ztt">Земеделска техника и технологии</li>
+          <li class="specialty-item" onclick="showDetails('spec-ecology')" data-i18n="spec-ecology">Екология и техника за опазване на околната среда</li>
+        </ul>
+      </section>
+
+      <!-- СЕКЦИЯ: ОТДЕЛ СТУДЕНТИ -->
+      <section class="forum-section" style="margin-top: 50px;">
+        <div class="info-card">
+          <h2 data-i18n="student-section-title">Отдел Студенти</h2>
+          <p data-i18n="student-section-info">
+            Тук ще намерите полезна информация, свързана с приема, възможностите, които предлага университетът,
+            както и информация за стипендии. Можете също така да изпращате анонимни препоръки и запитвания.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3 data-i18n="admission-title">Прием на студенти</h3>
+          <p data-i18n="admission-info">
+            Информация за кандидатстудентска кампания, срокове, изпити и необходими документи за записване в Русенски университет.
+            Разгледайте пълните условия за прием на официалния сайт на РУ "Ангел Кънчев".
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3 data-i18n="university-offerings-title">Информация за университета и какво предлага</h3>
+          <p data-i18n="university-offerings-info">
+            Русенският университет "Ангел Кънчев" предлага широк спектър от бакалавърски, магистърски и докторски програми.
+            Университетът разполага с модерни лаборатории, библиотеки, спортни съоръжения и студентски общежития.
+            Активно участва в международни програми за обмен като Еразъм+.
+          </p>
+        </div>
+
+        <div class="info-card" onclick="window.location.href='https://www.uni-ruse.bg/students/scholarships'" style="cursor: pointer;">
+          <h3 data-i18n="scholarships-title">Стипендии</h3>
+          <p data-i18n="scholarships-info">
+            Различни видове стипендии се предлагат на студентите въз основа на успех, социално положение или участие в научни проекти.
+            Следете обявите на студентските съвети и администрацията за актуална информация относно срокове и изисквания.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3 data-i18n="recommendations-title">Препоръки и запитвания (Анонимно)</h3>
+          <form id="anonymous-form" class="anonymous-form">
+              <div class="field-group">
+                  <label for="anonymous-message" data-i18n="anonymous-message-label">Вашето съобщение:</label>
+                  <textarea id="anonymous-message" name="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn-link" data-i18n="anonymous-submit-button">Изпрати анонимно</button>
+          </form>
+        </div>
+        <div id="anonymous-form-status" class="form-status"></div>
+      </section>
+
+      <!-- СЕКЦИЯ: ДЕТАЙЛИ ЗА СПЕЦИАЛНОСТ (ДИНАМИЧНА) -->
+      <section id="details-section">
+          <div id="specialty-details" class="details-box">
+            <!-- Тук се зарежда информацията динамично -->
+          </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const specialtyData = {
+      'spec-imk': {
+        title: 'Интернет и Мобилни Комуникации',
+        info: 'Тази специалност подготвя инженери за проектиране, изграждане и експлоатация на мобилни мрежи и интернет базирани системи.',
+        disciplines: [
+          {
+            name: 'Мобилни комуникационни мрежи',
+            professors: 'Проф. д-р Георгиев, доц. Петрова',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★★', material: '★★★★☆', base: '★★★★☆' },
+            description: 'Изучават се архитектурите на 4G/5G мрежите и протоколите за управление на радиоресурсите.'
+          },
+          {
+            name: 'Интернет протоколи и технологии',
+            professors: 'доц. Иванов',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★☆', material: '★★★★★', base: '★★★☆☆' }
+          }
+        ]
+      },
+      'spec-kst': {
+        title: 'Компютърни Системи и Технологии',
+        info: 'Специалността обхваща както хардуерното проектиране, така и разработката на комплексни софтуерни системи.',
+        disciplines: [
+          {
+            name: 'Обектно-ориентирано програмиране',
+            professors: 'Проф. Маринов',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★★', material: '★★★★★', base: '★★★★☆' }
+          },
+          {
+            name: 'Компютърни мрежи',
+            professors: 'Доц. д-р Стоянов',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★☆', material: '★★★★★', base: '★★★★★' }
+          }
+        ]
+      },
+      'spec-el': {
+        title: 'Електроника',
+        info: 'Фокусира се върху проектиране на аналогови и цифрови електронни устройства, микропроцесорна техника и силова електроника.',
+        disciplines: [
+          {
+            name: 'Аналогова схемотехника',
+            professors: 'Доц. д-р Михов',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★☆', material: '★★★★☆', base: '★★★☆☆' }
+          },
+          {
+            name: 'Микропроцесорна техника',
+            professors: 'Доц. д-р Белоев',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★★', material: '★★★★★', base: '★★★★☆' }
+          }
+        ]
+      },
+      'spec-kua': {
+        title: 'Компютърно Управление и Автоматизация',
+        info: 'Проектиране на автоматизирани системи за индустрията, роботика и управление на технологични процеси.',
+        disciplines: [
+          {
+            name: 'Теория на автоматичното управление',
+            professors: 'Проф. д-р Тодоров',
+            ratings: { prof: '★★★☆☆', material: '★★★★☆', base: '★★★★☆' }
+          }
+        ]
+      },
+      'spec-eee': {
+        title: 'Електроенергетика и Електрообзавеждане',
+        info: 'Специалността подготвя кадри за производство, пренос и разпределение на електрическа енергия.',
+        disciplines: [
+          {
+            name: 'Електрически машини',
+            professors: 'Проф. д-р Илиев',
+            ratings: { prof: '★★★★★', material: '★★★☆☆', base: '★★★★☆' }
+          }
+        ]
+      },
+      'spec-design': {
+        title: 'Промишлен дизайн',
+        info: 'Подготовка на дизайнери, съчетаващи инженерни знания с художествено мислене за проектиране на изделия и среди.',
+        disciplines: [
+          {
+            name: 'Основи на композицията',
+            professors: 'Проф. д-р инж. Ц. Недялков',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★★', material: '★★★★★', base: '★★★★☆' },
+            description: 'Изучават се закономерностите при изграждане на художествени и инженерни форми.'
+          },
+          {
+            name: 'Компютърно проектиране в дизайна',
+            professors: 'Доц. д-р Ю. Петрова',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★★', material: '★★★★☆', base: '★★★★★' }
+          }
+        ]
+      },
+      'spec-ztt': {
+        title: 'Земеделска техника и технологии',
+        info: 'Изучаване на съвременните машини за земеделието и технологиите за интелигентно фермерство.',
+        disciplines: [
+          {
+            name: 'Теория на земеделските машини',
+            professors: 'Проф. д-р Б. Борисов',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★☆', material: '★★★☆☆', base: '★★★★★' }
+          }
+        ]
+      },
+      'spec-ecology': {
+        title: 'Екология и техника за опазване на околната среда',
+        info: 'Фокусира се върху пречиствателни технологии, устойчиво развитие и управление на отпадъците.',
+        disciplines: [
+          {
+            name: 'Екологичен мониторинг',
+            professors: 'Доц. д-р П. Илиев',
+            materialsUrl: '#',
+            messagesUrl: '#',
+            ratings: { prof: '★★★★☆', material: '★★★★★', base: '★★★★☆' }
+          }
+        ]
+      }
+    };
+
+    function showDetails(id) {
+      const detailsDiv = document.getElementById('specialty-details');
+      const data = specialtyData[id];
+
+      if (!data) {
+        detailsDiv.innerHTML = '<p>Информацията за тази специалност се обновява в момента...</p>';
+        detailsDiv.style.display = 'block';
+        return;
+      }
+
+      let html = `
+        <h2 data-i18n="${id}">${data.title}</h2>
+        <p>${data.info}</p>
+        <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 20px 0;">
+        <h4>Дисциплини и рейтинг:</h4>
+      `;
+
+      data.disciplines.forEach(disc => {
+        html += `
+          <div class="discipline-card">
+            <div class="discipline-header" onclick="toggleDiscipline(this)">
+              <strong style="color: var(--accent);">${disc.name}</strong>
+              <span>▼</span>
+            </div>
+            <div class="discipline-content">
+              <p style="margin-bottom: 10px;">${disc.description || 'Няма допълнително описание за тази дисциплина.'}</p>
+              <p><small><strong data-i18n="label-professors">Преподаватели:</strong> ${disc.professors}</small></p>
+              
+              <div class="discipline-links">
+                <a href="${disc.materialsUrl}" class="btn-link" data-i18n="label-materials">📂 Материали</a>
+                <a href="${disc.messagesUrl}" class="btn-link" data-i18n="label-messages">💬 Съобщения</a>
+              </div>
+
+              <div class="rating-system">
+                <div style="grid-column: 1 / -1; font-weight: bold; margin-bottom: 5px;" data-i18n="label-rating-title">Рейтинг на дисциплината:</div>
+              <div class="rating-item">
+                <span data-i18n="label-prof-rating">Преподаватели:</span>
+                <span class="stars">${disc.ratings.prof}</span>
+              </div>
+              <div class="rating-item">
+                <span data-i18n="label-material-rating">Материал:</span>
+                <span class="stars">${disc.ratings.material}</span>
+              </div>
+              <div class="rating-item">
+                <span data-i18n="label-base-rating">База:</span>
+                <span class="stars">${disc.ratings.base}</span>
+              </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      detailsDiv.innerHTML = html;
+      detailsDiv.style.display = 'block';
+      
+      // Принудително обновяваме преводите за новосъздадените елементи
+      if (typeof changeLanguage === 'function') {
+        changeLanguage(localStorage.getItem("language") || "en");
+      }
+      
+      // Скрол до детайлите за мобилни устройства
+      detailsDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleDiscipline(header) {
+      const content = header.nextElementSibling;
+      const arrow = header.querySelector('span');
+      const isOpen = content.style.display === 'block';
+      
+      // Затваряме всички други в тази секция (по желание)
+      // document.querySelectorAll('.discipline-content').forEach(c => c.style.display = 'none');
+
+      content.style.display = isOpen ? 'none' : 'block';
+      arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    // Handle anonymous form submission
+    document.getElementById('anonymous-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
+
+      const messageInput = document.getElementById('anonymous-message');
+      const formStatus = document.getElementById('anonymous-form-status');
+
+      if (messageInput.value.trim() === '') {
+        formStatus.textContent = 'Моля, въведете съобщение.'; // This text should also be translatable
+        formStatus.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+        formStatus.style.display = 'block';
+        return;
+      }
+
+      // Simulate sending the message (in a real app, this would be an AJAX request)
+      formStatus.textContent = translations[localStorage.getItem("language") || "en"]["anonymous-success-message"];
+      formStatus.style.backgroundColor = 'rgba(0, 128, 0, 0.3)';
+      formStatus.style.display = 'block';
+      messageInput.value = ''; // Clear the textarea
+
+      setTimeout(() => {
+        formStatus.style.display = 'none';
+      }, 5000);
+    });
+  </script>
+
+  <script src="script.js"></script>
 </body>
 </html>

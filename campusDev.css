@@ -1,3 +1,7 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
   --dominant: #0f1419; /* 60% - Dark base */
   --secondary: #1e3a5f; /* 30% - Medium blue */
@@ -99,13 +103,6 @@ body {
   opacity: 1;
 }
 
-.nav__menu.active ul,
-.header:hover + .nav__menu ul,
-.nav__menu:hover ul {
-  transform: translateY(0);
-  opacity: 1;
-}
-
 .nav__menu ul {
   list-style: none;
   margin: 0;
@@ -129,6 +126,7 @@ body {
 
 .nav__menu a {
   color: white;
+  display: inline-block;
   text-decoration: none;
   padding: 10px 20px;
   font-size: 1.1rem;
@@ -254,7 +252,6 @@ main, aside {
 .scroll-container img:hover {
   transform: scale(1.02);
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 
