@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="logo.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="LoginContactForm.css">
 </head>
 <body>
-<div>
+<div class="login-container">
     <h1>Login</h1>
     <form id="loginForm">
         <div class="field-group">
@@ -22,9 +23,27 @@
 
         <button type="submit">Sign In</button>
     </form>
+    <div class="loader" id="loader"></div>
     <p class="signin-link">Don't have an account? <a href="RegistrationContactForm.html">Sign up</a></p>
 </div>
-
+<script>
+    // Form submit handler
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Hide form and show only loader
+        const container = document.querySelector('.login-container');
+        container.classList.add('loading');
+        
+        // Show loader
+        document.getElementById('loader').classList.add('show');
+        
+        // Simulate login delay and redirect to home page
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 2000);
+    });
+</script>
 
 </body>
 </html>

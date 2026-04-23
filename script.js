@@ -1,3 +1,13 @@
+// ПРЕМАХВАНЕ НА PRELOADER ПРИ ЗАРЕЖДАНЕ
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add("hidden");
+    }, 800); // Кратко забавяне за по-плавен ефект
+  }
+});
+
 const navMenu = document.querySelector(".nav__menu");
 const navLinks = document.querySelectorAll(".nav__menu a");
 const navToggle = document.querySelector(".nav__toggle"); // optional toggle control if added later
