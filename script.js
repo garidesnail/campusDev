@@ -4,7 +4,7 @@ window.addEventListener("load", () => {
   if (preloader) {
     setTimeout(() => {
       preloader.classList.add("hidden");
-    }, 800); // Кратко забавяне за по-плавен ефект
+    }, 200); // Кратко забавяне за по-плавен ефект
   }
 });
 
@@ -41,7 +41,7 @@ const languageSwitch = document.getElementById("switch");
 const currentLang = localStorage.getItem("language") || "en";
 
 // Set initial state based on saved language
-if (currentLang === "bg") {
+if (languageSwitch && currentLang === "bg") {
   languageSwitch.checked = true;
 }
 
@@ -54,12 +54,13 @@ const translations = {
     "kafeto-link": "Kafeto",
     "login-link": "Login/Sign Up",
     "welcome-heading": "Welcome to CampusDev",
+    "welcome-text": "The ultimate platform for the students of University of Ruse to share projects, join study groups, and collaborate and build the future together.",
     "features-heading": "Features",
-    "features-text": "Project feed, study groups, forums, challenge rooms.",
+    "features-text": "Here you'll find a variety of tools and resources to help you succeed in your academic journey.",
     "community-heading": "Community",
     "community-text": "Network with students & build better together.",
     "about-heading": "About CampusDev",
-    "about-text": "CampusDev is a platform for students to share projects and collaborate.",
+    "about-text": "CampusDev is a platform for students to share projects and collaborate. (Currently in beta, we are actively working on adding more features and improving the user experience. We welcome your feedback and suggestions to help us build a better platform for everyone.) And if you want to read more about the idea behind the project, you can check out the article in the 'Kafeto' section.",
     "contact-heading": "Contact",
     "contact-email": "Email: ",
     "footer-copyright": "© 2026 CampusDev. All rights reserved.",
@@ -114,16 +115,17 @@ const translations = {
     "kafeto-link": "Кафето",
     "login-link": "Вход/Регистрация",
     "welcome-heading": "Добре дошли в CampusDev",
+    "welcome-text": "Най-добрата платформа за студентите на Русенския университет за споделяне на проекти, присъединяване към учебни групи и съвместна работа за изграждане на бъдещето заедно.",
     "features-heading": "Функции",
-    "features-text": "Лента на проектите, учебни групи, форуми, стаи за предизвикателства.",
+    "features-text": "Тук ще намерите разнообразие от инструменти и ресурси, които да ви помогнат да успеете във вашето академично пътуване.",
     "community-heading": "Общност",
     "community-text": "Свързвайте се със студенти и строете заедно.",
     "about-heading": "За CampusDev",
-    "about-text": "CampusDev е платформа за студенти да споделят проекти и да сътрудничат.",
+    "about-text": "CampusDev е платформа за студенти за споделяне на проекти и сътрудничество. (В момента сме в бета версия и активно работим по добавянето на нови функции и подобряването на потребителското изживяване. Приемаме вашите отзиви и предложения, за да помогнем в изграждането на по-добра платформа за всички.) И ако искате да прочетете повече за идеята зад проекта, можете да разгледате статията в секция 'Кафето'.",
     "contact-heading": "Контакт",
     "contact-email": "Имейл: ",
     "footer-copyright": "© 2026 CampusDev. Всички права запазени.",
-    "footer-mission": "Создавано от студенти за студенти.",
+    "footer-mission": "Създадено от студенти за студенти.",
     "privacy-link": "Приватност",
     "terms-link": "Условия",
     "support-link": "Поддръжка",
@@ -191,10 +193,12 @@ function changeLanguage(lang) {
 }
 
 // Listen for language switch
-languageSwitch.addEventListener("change", () => {
-  const newLang = languageSwitch.checked ? "bg" : "en";
-  changeLanguage(newLang);
-});
+if (languageSwitch) {
+  languageSwitch.addEventListener("change", () => {
+    const newLang = languageSwitch.checked ? "bg" : "en";
+    changeLanguage(newLang);
+  });
+}
 
 // Initialize with saved language
 changeLanguage(currentLang);

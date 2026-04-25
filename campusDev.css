@@ -40,6 +40,13 @@ body {
   padding-top: var(--space-80);
   background: var(--bg-dark);
   color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 h1, h2, h3 {
