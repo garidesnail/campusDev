@@ -7,26 +7,13 @@
   <link rel="icon" type="image/png" href="logo.jpg">
   <title>Kafeto</title>
   <link rel="stylesheet" href="campusDev.css">
-
-  <!-- GSAP + Scroll -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
-</head>
-<body>
-
-  <!-- Loader -->
-  <div id="preloader">
-    <div class="loader-content">
-      <div class="loader">
-        <svg class="spin" viewBox="0 0 100 100"><circle class="dash" cx="50" cy="50" r="45"></circle></svg>
+ne  <div class="loader">
+        <svg class="spin" viewBox="0 0 100 100"><circle class="dash" cx="50" cy="50" r="45" pathLength="360"></circle></svg>
       </div>
       <div class="loader-text inline-block">CampusDev</div>
     </div>
   </div>
 
-  <!-- Visuals -->
   <div class="bg"></div>
 
   <!-- Header -->
@@ -61,6 +48,15 @@
       <li><a href="RegistrationContactForm.html" data-i18n="login-link">Login/Sign Up</a></li>
     </ul>
   </nav>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><span data-i18n="footer-copyright">© 2026 CampusDev. All rights reserved.</span></p>
+      <p><span data-i18n="footer-mission">Built by students for students.</span> <a href="privacy.html" data-i18n="privacy-link">Privacy</a> · <a href="terms.html" data-i18n="terms-link">Terms</a> · <a href="support.html" data-i18n="support-link">Support</a></p>
+      <p><span data-i18n="footer-social">Follow us on</span> <a href="https://github.com/garidesnail/campusDev" data-i18n="github-link">GitHub</a>, <a href="https://www.instagram.com/k3sk1._/" data-i18n="instagram-link">Instagram</a>.</p>
+    </div>
+  </footer>
 
   <!-- Logic -->
   <script src="script.js"></script>

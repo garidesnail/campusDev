@@ -4,15 +4,10 @@
   <!-- Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CampusDev - A collaborative platform for students to share projects, join study groups, and build the future together.">
   <link rel="icon" type="image/png" href="logo.jpg">
   <title>Home</title>
   <link rel="stylesheet" href="campusDev.css">
-
-  <!-- GSAP + Scroll -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
 </head>
 
 <body>
@@ -21,7 +16,7 @@
   <div id="preloader">
     <div class="loader-content">
       <div class="loader">
-        <svg class="spin" viewBox="0 0 100 100"><circle class="dash" cx="50" cy="50" r="45"></circle></svg>
+        <svg class="spin" viewBox="0 0 100 100"><circle class="dash" cx="50" cy="50" r="45" pathLength="360"></circle></svg>
       </div>
       <div class="loader-text inline-block">CampusDev</div>
     </div>
@@ -56,59 +51,57 @@
   <!-- Navigation -->
   <nav class="nav__menu">
     <ul>
-      <li><a href="index.html" data-i18n="home-link">Home</a></li>
+      <li><a href="index.html" data-i18n="home-link" class="active">Home</a></li>
       <li><a href="forums.html" data-i18n="forums-link">Forums</a></li>
       <li><a href="kafeto.html" data-i18n="kafeto-link">Kafeto</a></li>
       <li><a href="RegistrationContactForm.html" data-i18n="login-link">Login/Sign Up</a></li>
     </ul>
   </nav>
 
-  <!-- Content -->
-  <div class="scroll-container"> 
-
-    <section data-bgcolor="#1a1a2e" data-textcolor="#ffffff">
+  <main>
+    <section class="hero-section">
       <h1 data-i18n="welcome-heading">Welcome to CampusDev</h1>
+      <a href="RegistrationContactForm.html" class="btn-cta" data-i18n="login-link">Join Now</a>
       <img src="images/img1.jpg" alt="">
     </section>
 
-    <section data-bgcolor="#163a5f" data-textcolor="#ffd36f">
-      <h2 data-i18n="features-heading">Features</h2>
-      <p data-i18n="features-text">Project feed, study groups, forums, challenge rooms.</p>
+    <section class="content-card">
+      <div class="card-inner">
+        <h2 data-i18n="features-heading">Features</h2>
+        <p data-i18n="features-text">Project feed, study groups, forums, challenge rooms.</p>
+      </div>
       <img src="images/img2.jpg" alt="">
     </section>
 
-    <section data-bgcolor="#275b8a" data-textcolor="#fff">
+    <section class="content-card">
       <h2 data-i18n="community-heading">Community</h2>
       <p data-i18n="community-text">Network with students & build better together.</p>
       <img src="images/img3.jpg" alt="">
     </section>
 
-    <div class="container">
-    <main>
-      <div class="main__content">
+    <div class="container-grid">
+      <div class="info-box">
         <h2 data-i18n="about-heading">About CampusDev</h2>
         <p data-i18n="about-text">
           CampusDev is a platform for students to share projects and collaborate.
         </p>
       </div>
-    </main>
 
-    <aside>
-      <h3 data-i18n="contact-heading">Contact</h3>
-      <p><span data-i18n="contact-email">Email: </span><a href="mailto:s243048@stud.uni-ruse.bg">s243048@stud.uni-ruse.bg</a></p>
-    </aside>
-  </div>
+      <aside class="info-box">
+        <h3 data-i18n="contact-heading">Contact</h3>
+        <p><span data-i18n="contact-email">Email: </span><a href="mailto:s243048@stud.uni-ruse.bg">s243048@stud.uni-ruse.bg</a></p>
+      </aside>
+    </div>
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
       <p><span data-i18n="footer-copyright">© 2026 CampusDev. All rights reserved.</span></p>
-      <p><span data-i18n="footer-mission">Built by students for students.</span> <a href="#" data-i18n="privacy-link">Privacy</a> · <a href="#" data-i18n="terms-link">Terms</a> · <a href="#" data-i18n="support-link">Support</a></p>
-      <p><span data-i18n="footer-social">Follow us on</span> <a href="#" data-i18n="twitter-link">Twitter</a>, <a href="#" data-i18n="github-link">GitHub</a>, <a href="#" data-i18n="linkedin-link">LinkedIn</a>.</p>
+      <p><span data-i18n="footer-mission">Built by students for students.</span> <a href="privacy.html" data-i18n="privacy-link">Privacy</a> · <a href="terms.html" data-i18n="terms-link">Terms</a> · <a href="support.html" data-i18n="support-link">Support</a></p>
+      <p><span data-i18n="footer-social">Follow us on</span> <a href="https://github.com/garidesnail/campusDev" data-i18n="github-link">GitHub</a>, <a href="https://www.instagram.com/k3sk1._/" data-i18n="instagram-link">Instagram</a>.</p>
     </div>
   </footer>
-
-</div> 
 
 <!-- Logic -->
 <script src="script.js"></script>
