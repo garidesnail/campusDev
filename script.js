@@ -1,4 +1,4 @@
-// ПРЕМАХВАНЕ НА PRELOADER ПРИ ЗАРЕЖДАНЕ
+// Loader
 window.addEventListener("load", () => {
   const preloader = document.getElementById("preloader");
   if (preloader) {
@@ -8,6 +8,7 @@ window.addEventListener("load", () => {
   }
 });
 
+// Navigation
 const navMenu = document.querySelector(".nav__menu");
 const navLinks = document.querySelectorAll(".nav__menu a");
 const navToggle = document.querySelector(".nav__toggle"); // optional toggle control if added later
@@ -19,10 +20,12 @@ window.addEventListener("resize", () => {
   }
 });
 
+// Scroll
 gsap.registerPlugin(ScrollTrigger);
 
 const scrollContainer = document.querySelector(".scroll-container");
 
+// Scroller
 if (scrollContainer) {
 
   const scroller = new LocomotiveScroll({
@@ -51,6 +54,7 @@ if (scrollContainer) {
   ScrollTrigger.addEventListener("refresh", () => scroller.update());
   ScrollTrigger.refresh();
 
+  // Animations
  
   const sections = scrollContainer.querySelectorAll("section");
 
@@ -116,7 +120,7 @@ if (scrollContainer) {
   });
 }
 
-// LANGUAGE SWITCHING
+// Localization
 const languageSwitch = document.getElementById("switch");
 const currentLang = localStorage.getItem("language") || "en";
 
@@ -247,7 +251,7 @@ const translations = {
   }
 };
 
-// Function to change language
+// Methods
 function changeLanguage(lang) {
   localStorage.setItem("language", lang);
   document.documentElement.lang = lang;

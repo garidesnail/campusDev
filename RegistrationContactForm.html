@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="logo.jpg">
+    <!-- Meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <link rel="stylesheet" href="RegistrationContactForm.css">
 </head>
 <body>
+<!-- Layout -->
 <div class="registration-container">
     <h1>Registration</h1>
     <form id="registerForm">
@@ -16,7 +18,7 @@
             <input type="text" id="username" name="username" required>
         </div>
 
-        <!-- Role Selection Toggle -->
+        <!-- Roles -->
         <div class="field-group role-selector">
             <label>I am a:</label>
             <div style="display: flex; gap: 30px; justify-content: center; align-items: center;">
@@ -58,6 +60,7 @@
     <div class="loader" id="loader"></div>
     <p class="signin-link">Already have an account? <a href="LoginContactForm.html">Log in</a></p>
 </div>
+<!-- Logic -->
 
 <script>
     // Handle role selection toggle

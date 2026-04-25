@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="logo.jpg">
@@ -15,9 +16,20 @@
 </head>
 <body>
 
+  <!-- Loader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader">
+        <svg class="spin" viewBox="0 0 100 100"><circle class="dash" cx="50" cy="50" r="45"></circle></svg>
+      </div>
+      <div class="loader-text inline-block">CampusDev</div>
+    </div>
+  </div>
+
+  <!-- Visuals -->
   <div class="bg"></div>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header class="header">
     <div class="nav__logo">
       <img src="logo.jpg" alt="CampusDev Logo">
@@ -25,7 +37,7 @@
 
     <h1 data-i18n="header-title">CampusDev Beta</h1>
 
-    <!-- Language Switch Button -->
+    <!-- Internationalization -->
     <div class="language-switch-container">
       <label class="switch-button" for="switch">
         <div class="switch-outer">
@@ -40,7 +52,7 @@
     </div>
   </header>
 
-  <!-- NAV -->
+  <!-- Navigation -->
   <nav class="nav__menu">
     <ul>
       <li><a href="index.html" data-i18n="home-link">Home</a></li>
@@ -50,5 +62,7 @@
     </ul>
   </nav>
 
+  <!-- Logic -->
+  <script src="script.js"></script>
 </body>
 </html>

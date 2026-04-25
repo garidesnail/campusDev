@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="logo.jpg">
@@ -12,6 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
+  <!-- Styles -->
   <style>
     .specialties-list {
       list-style: none;
@@ -149,9 +151,20 @@
 </head>
 <body>
 
+  <!-- Loader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader">
+        <svg class="spin" viewBox="0 0 100 100"><circle class="dash" cx="50" cy="50" r="45"></circle></svg>
+      </div>
+      <div class="loader-text inline-block">CampusDev</div>
+    </div>
+  </div>
+
+  <!-- Visuals -->
   <div class="bg"></div>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header class="header">
     <div class="nav__logo">
       <img src="logo.jpg" alt="CampusDev Logo">
@@ -159,7 +172,7 @@
 
     <h1 data-i18n="header-title">CampusDev Beta</h1>
 
-    <!-- Language Switch Button -->
+    <!-- Internationalization -->
     <div class="language-switch-container">
       <label class="switch-button" for="switch">
         <div class="switch-outer">
@@ -174,7 +187,7 @@
     </div>
   </header>
 
-  <!-- NAV -->
+  <!-- Navigation -->
   <nav class="nav__menu">
     <ul>
       <li><a href="index.html" data-i18n="home-link">Home</a></li>
@@ -184,9 +197,10 @@
     </ul>
   </nav>
 
+  <!-- Main -->
   <div class="container">
     <main>
-      <!-- СЕКЦИЯ: ФАКУЛТЕТ ЕЕА -->
+      <!-- Sections -->
       <section class="forum-section">
         <div class="info-card">
           <h2 data-i18n="faculty-eea-title">Факултет Електротехника, електроника и автоматика</h2>
@@ -271,7 +285,7 @@
         <div id="anonymous-form-status" class="form-status"></div>
       </section>
 
-      <!-- СЕКЦИЯ: ДЕТАЙЛИ ЗА СПЕЦИАЛНОСТ (ДИНАМИЧНА) -->
+      <!-- Dynamic -->
       <section id="details-section">
           <div id="specialty-details" class="details-box">
             <!-- Тук се зарежда информацията динамично -->
@@ -280,6 +294,7 @@
     </main>
   </div>
 
+  <!-- Script -->
   <script>
     const specialtyData = {
       'spec-imk': {
@@ -517,6 +532,7 @@
     });
   </script>
 
+  <!-- Logic -->
   <script src="script.js"></script>
 </body>
 </html>
