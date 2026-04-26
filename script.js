@@ -51,7 +51,7 @@ const translations = {
     "header-title": "CampusDev Beta",
     "home-link": "Home",
     "forums-link": "Forums",
-    "kafeto-link": "Kafeto",
+    "kafeto-link": "Cafeteria",
     "login-link": "Login/Sign Up",
     "welcome-heading": "Welcome to CampusDev",
     "welcome-text": "The ultimate platform for the students of University of Ruse to share projects, join study groups, and collaborate and build the future together.",
@@ -74,7 +74,7 @@ const translations = {
     "instagram-link": "Instagram",
     "linkedin-link": "LinkedIn",
     "page-title-forums": "Forums",
-    "page-title-kafeto": "Kafeto",
+    "page-title-kafeto": "Cafeteria",
     "faculty-eea-title": "Faculty of Electrical Engineering, Electronics and Automation",
     "faculty-eea-info": "Welcome to the EEA faculty forum. Here you can find information about the educational process, projects, and discussions related to modern technologies and engineering sciences.",
     "faculty-aif-title": "Agrarian and Industrial Faculty",
@@ -200,5 +200,38 @@ if (languageSwitch) {
   });
 }
 
+// --- SCROLL REVEAL LOGIC ---
+const revealOnScroll = () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // Ако искаш анимацията да се повтаря всеки път, махни долния ред:
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.15 }); // Анимацията започва, когато 15% от елемента са видими
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+};
+
 // Initialize with saved language
 changeLanguage(currentLang);
+revealOnScroll();
+// --- BACK TO TOP BUTTON LOGIC ---
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});

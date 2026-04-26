@@ -1,105 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="logo.jpg">
-    <!-- Meta -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
-    <link rel="stylesheet" href="RegistrationContactForm.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth | CampusDev</title>
+  <link rel="icon" type="image/png" href="logo.jpg">
+  <link rel="stylesheet" href="RegistrationContactForm.css">
+  <link rel="stylesheet" href="campusDev.css">
 </head>
 <body>
-<!-- Layout -->
-<div class="registration-container">
-    <h1>Registration</h1>
-    <form id="registerForm">
-        <div class="field-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-        </div>
 
-        <!-- Roles -->
-        <div class="field-group role-selector">
-            <label>I am a:</label>
-            <div style="display: flex; gap: 30px; justify-content: center; align-items: center;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <div class="radio-input">
-                        <input type="radio" id="student-role" name="role" value="student" checked>
-                        <span class="check-mark">X</span>
-                    </div>
-                    <label for="student-role" style="cursor: pointer; color: #d9e6ff;">Student</label>
-                </div>
-                
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <div class="radio-input">
-                        <input type="radio" id="teacher-role" name="role" value="teacher">
-                        <span class="check-mark">X</span>
-                    </div>
-                    <label for="teacher-role" style="cursor: pointer; color: #d9e6ff;">Professor</label>
-                </div>
-            </div>
-        </div>
+<div class="auth-box reveal">
+  <div class="logo">CampusDev</div>
 
-        <div class="field-group" id="faculty-number-group">
-            <label for="fNumber">Faculty Number</label>
-            <input type="text" id="fNumber" name="fNumber" required>
-        </div>
+  <!-- LOGIN -->
+  <form class="form active" id="loginForm">
+    <h2 class="title">Log In</h2>
+    <div class="input-box">
+      <input type="email" id="login-email" name="email" required>
+      <label for="login-email">Email</label>
+    </div>
+    <div class="input-box">
+      <input type="password" id="login-password" name="password" required>
+      <label for="login-password">Password</label>
+    </div>
+    <div class="small-link">
+      <a href="#">Forgot password?</a>
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="btn-hero btn-hero-item">
+        <span class="btn-hero-bg">
+          <span class="btn-hero-bg-layers">
+            <span class="btn-hero-bg-layer btn-hero-bg-layer-1 -purple"></span>
+            <span class="btn-hero-bg-layer btn-hero-bg-layer-2 -turquoise"></span>
+            <span class="btn-hero-bg-layer btn-hero-bg-layer-3 -yellow"></span>
+          </span>
+        </span>
+        <span class="btn-hero-inner">
+          <span class="btn-hero-inner-static">LOG IN</span>
+          <span class="btn-hero-inner-hover">LOG IN</span>
+        </span>
+      </button>
+    </div>
+    <div class="switch-text">
+      Don't have account? <span onclick="showRegister()">Sign Up</span>
+    </div>
+  </form>
 
-        <div class="field-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+  <!-- REGISTER -->
+  <form class="form" id="registerForm">
+    <h2 class="title">Sign Up</h2>
+    <div class="input-box">
+      <input type="text" id="reg-username" name="username" required>
+      <label for="reg-username">Username</label>
+    </div>
+    
+    <!-- Role Selection -->
+    <div class="role-container">
+      <label class="radio-label">
+        <input type="radio" name="role" value="student" id="role-student" checked onchange="toggleRole(this)"> Student
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="role" value="professor" id="role-professor" onchange="toggleRole(this)"> Professor
+      </label>
+    </div>
 
-        <div class="field-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-
-        <button type="submit">Send</button>
-    </form>
-    <div class="loader" id="loader"></div>
-    <p class="signin-link">Already have an account? <a href="LoginContactForm.html">Log in</a></p>
+    <div class="input-box" id="faculty-box">
+      <input type="text" id="fNumber" name="fNumber" required>
+      <label for="fNumber">Faculty Number</label>
+    </div>
+    <div class="input-box">
+      <input type="email" id="reg-email" name="email" required>
+      <label for="reg-email">Email</label>
+    </div>
+    <div class="input-box">
+      <input type="password" id="reg-password" name="password" required>
+      <label for="reg-password">Password</label>
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="btn-hero btn-hero-item">
+        <span class="btn-hero-bg">
+          <span class="btn-hero-bg-layers">
+            <span class="btn-hero-bg-layer btn-hero-bg-layer-1 -purple"></span>
+            <span class="btn-hero-bg-layer btn-hero-bg-layer-2 -turquoise"></span>
+            <span class="btn-hero-bg-layer btn-hero-bg-layer-3 -yellow"></span>
+          </span>
+        </span>
+        <span class="btn-hero-inner">
+          <span class="btn-hero-inner-static">CREATE ACCOUNT</span>
+          <span class="btn-hero-inner-hover">CREATE ACCOUNT</span>
+        </span>
+      </button>
+    </div>
+    <div class="switch-text">
+      Already have account? <span onclick="showLogin()">Log In</span>
+    </div>
+  </form>
 </div>
-<!-- Logic -->
 
 <script>
-    // Handle role selection toggle
-    const studentRadio = document.getElementById('student-role');
-    const teacherRadio = document.getElementById('teacher-role');
-    const facultyNumberGroup = document.getElementById('faculty-number-group');
-    const facultyNumberInput = document.getElementById('fNumber');
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
 
-    function toggleFacultyNumber() {
-        if (studentRadio.checked) {
-            facultyNumberGroup.style.display = 'block';
-            facultyNumberInput.required = true;
-        } else {
-            facultyNumberGroup.style.display = 'none';
-            facultyNumberInput.required = false;
-            facultyNumberInput.value = '';
-        }
-    }
+function showRegister(){
+  loginForm.classList.remove("active");
+  registerForm.classList.add("active");
+}
+function showLogin(){
+  registerForm.classList.remove("active");
+  loginForm.classList.add("active");
+}
+function toggleRole(radio) {
+  const facultyBox = document.getElementById('faculty-box');
+  const facultyInput = document.getElementById('fNumber');
+  facultyBox.style.display = (radio.value === 'student') ? 'block' : 'none';
+  facultyInput.required = (radio.value === 'student');
+}
 
-    studentRadio.addEventListener('change', toggleFacultyNumber);
-    teacherRadio.addEventListener('change', toggleFacultyNumber);
+// Check if user wants to sign up directly
+if(window.location.hash === '#signup') showRegister();
 
-    // Form submit handler
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Hide form and show only loader
-        const container = document.querySelector('.registration-container');
-        container.classList.add('loading');
-        
-        // Show loader
-        document.getElementById('loader').classList.add('show');
-        
-        // Simulate registration delay and redirect to home page
-        setTimeout(function() {
-            window.location.href = 'index.html';
-        }, 2000);
-    });
+// Form redirection
+document.querySelectorAll('form').forEach(form => {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    window.location.href = 'index.html';
+  });
+});
+
+// Trigger reveal animation for the auth box
+setTimeout(() => document.querySelector('.auth-box').classList.add('active'), 100);
 </script>
-
 </body>
 </html>

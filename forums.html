@@ -142,6 +142,39 @@
       transform: translateY(-5px);
       background: rgba(255, 255, 255, 0.05);
     }
+
+    #backToTop {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 65px;
+  height: 65px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+#backToTop img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(0,0,0,0.25));
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  transform: scale(1.12);
+}
   </style>
 </head>
 <body>
@@ -165,7 +198,7 @@
       <img src="logo.jpg" alt="CampusDev Logo">
     </div>
 
-    <h1 data-i18n="header-title">CampusDev Beta</h1>
+    <h1>CampusDev Beta</h1>
 
     <!-- Internationalization -->
     <div class="language-switch-container">
@@ -203,33 +236,31 @@
             Добре дошли във форума на факултет ЕЕА. Тук можете да намерите информация за учебния процес, 
             проекти и дискусии, свързани със съвременните технологии и инженерните науки.
           </p>
+          <h3 data-i18n="specialties-title" style="margin-top: 20px;">Специалности:</h3>
+          <ul class="specialties-list" style="margin-bottom: 0;">
+            <li class="specialty-item" onclick="showDetails('spec-imk')" data-i18n="spec-imk">ИНТЕРНЕТ И МОБИЛНИ КОМУНИКАЦИИ</li>
+            <li class="specialty-item" onclick="showDetails('spec-kst')" data-i18n="spec-kst">КОМПЮТЪРНИ СИСТЕМИ И ТЕХНОЛОГИИ</li>
+            <li class="specialty-item" onclick="showDetails('spec-el')" data-i18n="spec-el">ЕЛЕКТРОНИКА</li>
+            <li class="specialty-item" onclick="showDetails('spec-kua')" data-i18n="spec-kua">КОМПЮТЪРНО УПРАВЛЕНИЕ И АВТОМАТИЗАЦИЯ</li>
+            <li class="specialty-item" onclick="showDetails('spec-eee')" data-i18n="spec-eee">ЕЛЕКТРОЕНЕРГЕТИКА И ЕЛЕКТРООБЗАВЕЖДАНЕ</li>
+          </ul>
         </div>
-        
-        <h3 data-i18n="specialties-title">Специалности:</h3>
-        <ul class="specialties-list">
-          <li class="specialty-item" onclick="showDetails('spec-imk')" data-i18n="spec-imk">ИНТЕРНЕТ И МОБИЛНИ КОМУНИКАЦИИ</li>
-          <li class="specialty-item" onclick="showDetails('spec-kst')" data-i18n="spec-kst">КОМПЮТЪРНИ СИСТЕМИ И ТЕХНОЛОГИИ</li>
-          <li class="specialty-item" onclick="showDetails('spec-el')" data-i18n="spec-el">ЕЛЕКТРОНИКА</li>
-          <li class="specialty-item" onclick="showDetails('spec-kua')" data-i18n="spec-kua">КОМПЮТЪРНО УПРАВЛЕНИЕ И АВТОМАТИЗАЦИЯ</li>
-          <li class="specialty-item" onclick="showDetails('spec-eee')" data-i18n="spec-eee">ЕЛЕКТРОЕНЕРГЕТИКА И ЕЛЕКТРООБЗАВЕЖДАНЕ</li>
-        </ul>
       </section>
 
       <!-- СЕКЦИЯ: ФАКУЛТЕТ АИФ -->
-      <section class="forum-section" style="margin-top: 50px;">
+      <section class="forum-section">
         <div class="info-card">
           <h2 data-i18n="faculty-aif-title">Аграрно-индустриален факултет</h2>
           <p data-i18n="faculty-aif-info">
             Форум на Аграрно-индустриалния факултет. Фокус върху земеделска техника, дизайн и екологично инженерство.
           </p>
+          <h3 data-i18n="specialties-title" style="margin-top: 20px;">Специалности:</h3>
+          <ul class="specialties-list" style="margin-bottom: 0;">
+            <li class="specialty-item" onclick="showDetails('spec-design')" data-i18n="spec-design">Промишлен дизайн</li>
+            <li class="specialty-item" onclick="showDetails('spec-ztt')" data-i18n="spec-ztt">Земеделска техника и технологии</li>
+            <li class="specialty-item" onclick="showDetails('spec-ecology')" data-i18n="spec-ecology">Екология и техника за опазване на околната среда</li>
+          </ul>
         </div>
-
-        <h3 data-i18n="specialties-title">Специалности:</h3>
-        <ul class="specialties-list">
-          <li class="specialty-item" onclick="showDetails('spec-design')" data-i18n="spec-design">Промишлен дизайн</li>
-          <li class="specialty-item" onclick="showDetails('spec-ztt')" data-i18n="spec-ztt">Земеделска техника и технологии</li>
-          <li class="specialty-item" onclick="showDetails('spec-ecology')" data-i18n="spec-ecology">Екология и техника за опазване на околната среда</li>
-        </ul>
       </section>
 
       <!-- СЕКЦИЯ: ОТДЕЛ СТУДЕНТИ -->
@@ -242,7 +273,7 @@
           </p>
         </div>
 
-        <div class="info-card">
+        <div class="info-card" onclick="window.location.href= 'https://www.uni-ruse.bg/admission'" style="cursor: pointer;">
           <h3 data-i18n="admission-title">Прием на студенти</h3>
           <p data-i18n="admission-info">
             Информация за кандидатстудентска кампания, срокове, изпити и необходими документи за записване в Русенски университет.
@@ -535,7 +566,9 @@
       }, 5000);
     });
   </script>
-
+  <button id="backToTop">
+  <img src="arrrow.png" alt="Back to top">
+</button>
   <!-- Logic -->
   <script src="script.js"></script>
 </body>

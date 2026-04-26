@@ -154,25 +154,143 @@ h1, h2, h3 {
   background: rgba(71, 184, 255, 0.1);
 }
 
-/* CTA Button */
-.btn-cta {
-  display: inline-block;
-  padding: var(--space-16) var(--space-32);
-  background: var(--primary);
-  color: var(--bg-dark);
-  text-decoration: none;
-  font-weight: 700;
-  border-radius: var(--space-8);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(71, 184, 255, 0.3);
-  margin-top: var(--space-16);
+/* From Uiverse.io by OliverZeros */ 
+button {
+  all: unset;
 }
 
-.btn-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(71, 184, 255, 0.4);
-  filter: brightness(1.1);
+.btn-hero {
+  position: relative;
+  display: inline-flex;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: Segoe UI;
+  font-size: 1.2rem;
+  font-weight: 640;
+  color: #fafaf6;
+  letter-spacing: -0.06em;
+  cursor: pointer;
 }
+
+.btn-hero-item {
+  background-color: transparent;
+  color: #1d1d1f;
+}
+
+.btn-hero-item .btn-hero-bg {
+  border-color: rgba(255, 208, 116);
+  background-color: rgba(255, 208, 116);
+}
+
+.btn-hero-inner,
+.btn-hero-inner-hover,
+.btn-hero-inner-static {
+  pointer-events: none;
+  display: block;
+}
+
+.btn-hero-inner {
+  position: relative;
+}
+
+.btn-hero-inner-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(70%);
+}
+
+.btn-hero-bg {
+  overflow: hidden;
+  border-radius: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  transition: transform 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-hero-bg,
+.btn-hero-bg-layer,
+.btn-hero-bg-layers {
+  display: block;
+}
+
+.btn-hero-bg-layers {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: -60%;
+  aspect-ratio: 1 / 1;
+  width: max(200%, 10rem);
+}
+
+.btn-hero-bg-layer {
+  border-radius: 9999px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+}
+
+.btn-hero-bg-layer.-purple {
+  background-color: rgba(163, 116, 255);
+}
+
+.btn-hero-bg-layer.-turquoise {
+  background-color: rgba(23, 241, 209);
+}
+
+.btn-hero-bg-layer.-yellow {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 208, 116, var(--tw-bg-opacity));
+}
+
+.btn-hero:hover .btn-hero-inner-static {
+  opacity: 0;
+  transform: translateY(-70%);
+  transition:
+    transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.3s linear;
+}
+
+.btn-hero:hover .btn-hero-inner-hover {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-hero:hover .btn-hero-bg-layer {
+  transition:
+    transform 1.3s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.3s linear;
+}
+
+.btn-hero:hover .btn-hero-bg-layer-1 {
+  transform: scale(1);
+}
+
+.btn-hero:hover .btn-hero-bg-layer-2 {
+  transition-delay: 0.1s;
+  transform: scale(1);
+}
+
+.btn-hero:hover .btn-hero-bg-layer-3 {
+  transition-delay: 0.2s;
+  transform: scale(1);
+}
+
 
 /* Layout & Cards */
 .container-grid {
@@ -205,6 +323,19 @@ section {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: var(--space-48);
+}
+
+/* Content Cards */
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* FOOTER */
@@ -518,4 +649,41 @@ section img,
   37.5%, 50% { rotate: 540deg; }
   62.5%, 75% { rotate: 810deg; }
   87.5%, 100% { rotate: 1080deg; }
+}
+
+.kafeto-coming {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  color: white;
+}
+
+.kafeto-coming h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.kafeto-coming p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.kafeto-coming img {
+  width: 260px;
+  max-width: 90%;
+  margin: 20px 0;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.15));
+}
+
+.small-text {
+  opacity: 0.7;
+  font-style: italic;
+  margin-top: 20px;
 }
