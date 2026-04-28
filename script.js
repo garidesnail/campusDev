@@ -106,7 +106,9 @@ const translations = {
     "recommendations-title": "Recommendations and Inquiries (Anonymous)",
     "anonymous-message-label": "Your message:",
     "anonymous-submit-button": "Send Anonymously",
-    "anonymous-success-message": "Your message has been sent anonymously. Thank you!"
+    "anonymous-success-message": "Your message has been sent anonymously. Thank you!",
+    "kafeto-post-text": "Does anyone know when the scholarships will be transferred or when the ranking will be released?",
+    "kafeto-post-2-text": "I'm looking for a cheap housewares shop near the university, any suggestions?"
   },
   bg: {
     "header-title": "CampusDev Бета",
@@ -167,7 +169,9 @@ const translations = {
     "recommendations-title": "Препоръки и запитвания (Анонимно)",
     "anonymous-message-label": "Вашето съобщение:",
     "anonymous-submit-button": "Изпрати анонимно",
-    "anonymous-success-message": "Вашето съобщение е изпратено анонимно. Благодарим Ви!"
+    "anonymous-success-message": "Вашето съобщение е изпратено анонимно. Благодарим Ви!",
+    "kafeto-post-text": "Някой знае ли кога ще ни превеждат стипендиите или кога ще излезе класирането?",
+    "kafeto-post-2-text": "Търся евтино магазинче за домашни потреби около университета, някой да има предложения?"
   }
 };
 
