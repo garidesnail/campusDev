@@ -167,7 +167,11 @@
 <script src="script.js"></script>
 <script>
 function logout(){
-  localStorage.removeItem("user");
+  try {
+    localStorage.removeItem("user");
+  } catch (e) {
+    console.warn("Could not clear user data from localStorage");
+  }
   window.location.href = "index.html";
 }
 </script>

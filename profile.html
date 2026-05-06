@@ -125,7 +125,11 @@
 <script src="script.js"></script>
 <script>
 function logout(){
-  localStorage.removeItem("user");
+  try {
+    localStorage.removeItem("user");
+  } catch (e) {
+    console.warn("Could not clear user data from localStorage");
+  }
   // Update nav on other pages
   window.location.href = "index.html";
 }

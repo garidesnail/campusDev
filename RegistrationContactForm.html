@@ -129,14 +129,18 @@ document.getElementById('loginForm').addEventListener('submit', e => {
   e.preventDefault();
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
-  
+
   // Save user to localStorage
-  localStorage.setItem('user', JSON.stringify({
-    email: email,
-    username: email.split('@')[0],
-    role: 'student'
-  }));
-  
+  try {
+    localStorage.setItem('user', JSON.stringify({
+      email: email,
+      username: email.split('@')[0],
+      role: 'student'
+    }));
+  } catch (e) {
+    console.warn("Could not save user data to localStorage");
+  }
+
   window.location.href = 'index.html';
 });
 
@@ -146,15 +150,19 @@ document.getElementById('registerForm').addEventListener('submit', e => {
   const email = document.getElementById('reg-email').value;
   const role = document.querySelector('input[name="role"]:checked').value;
   const fNumber = document.getElementById('fNumber').value;
-  
+
   // Save user to localStorage
-  localStorage.setItem('user', JSON.stringify({
-    username: username,
-    email: email,
-    role: role,
-    fNumber: fNumber
-  }));
-  
+  try {
+    localStorage.setItem('user', JSON.stringify({
+      username: username,
+      email: email,
+      role: role,
+      fNumber: fNumber
+    }));
+  } catch (e) {
+    console.warn("Could not save user data to localStorage");
+  }
+
   window.location.href = 'index.html';
 });
 
