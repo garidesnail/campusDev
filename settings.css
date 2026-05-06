@@ -1,0 +1,242 @@
+/* Settings Page Styles */
+.settings-container {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--space-16);
+  padding: var(--space-32);
+  max-width: 800px;
+}
+
+.settings-container h2 {
+  margin: 0 0 var(--space-32) 0;
+  font-size: 1.8rem;
+  color: var(--text-main);
+}
+
+.settings-section {
+  margin-bottom: var(--space-32);
+  padding-bottom: var(--space-32);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.settings-section h3 {
+  margin: 0 0 var(--space-24) 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.settings-item {
+  margin-bottom: var(--space-20);
+}
+
+.settings-item:last-child {
+  margin-bottom: 0;
+}
+
+.settings-item label {
+  display: block;
+  margin-bottom: var(--space-8);
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.input-group {
+  display: flex;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.input-group input,
+.select-input {
+  flex: 1;
+  padding: var(--space-12);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--card-border);
+  border-radius: var(--space-8);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus,
+.select-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(71, 184, 255, 0.05);
+}
+
+.input-group input:disabled,
+.input-group input[readonly] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-group button {
+  padding: var(--space-12) var(--space-20);
+  border: none;
+  border-radius: var(--space-8);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+.btn-primary:hover {
+  background: #40a5e6;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  border: 1px solid var(--card-border);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary);
+}
+
+/* Toggle Switches */
+.settings-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-16);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--card-border);
+  border-radius: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+.settings-toggle:last-child {
+  margin-bottom: 0;
+}
+
+.toggle-info h4 {
+  margin: 0 0 var(--space-4) 0;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.toggle-info p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-flex;
+  width: 50px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.toggle-slider::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--text-main);
+  top: 2px;
+  left: 2px;
+  transition: all 0.3s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.toggle-switch input:checked + .toggle-slider::after {
+  transform: translateX(22px);
+  background: var(--bg-dark);
+}
+
+/* Select Input */
+.select-input {
+  cursor: pointer;
+}
+
+.select-input option {
+  background: var(--bg-dark);
+  color: var(--text-main);
+}
+
+/* Danger Zone */
+.danger-zone {
+  background: rgba(255, 71, 87, 0.05);
+  border-color: rgba(255, 71, 87, 0.2);
+}
+
+.danger-zone h3 {
+  color: #ff4757;
+}
+
+.btn-danger {
+  padding: var(--space-12) var(--space-24);
+  background: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: var(--space-8);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 71, 87, 0.2);
+  border-color: #ff4757;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .settings-container {
+    padding: var(--space-20);
+  }
+
+  .settings-toggle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-12);
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group button {
+    width: 100%;
+  }
+}

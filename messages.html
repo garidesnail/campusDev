@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CampusDev Messages - Connect with other students.">
+  <link rel="icon" type="image/png" href="logo.jpg">
+  <title>Messages | CampusDev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet">
+  <link rel="stylesheet" href="campusDev.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="messages.css">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader">
+        <svg class="spin" viewBox="0 0 100 100"><circle class="dash" cx="50" cy="50" r="45" pathLength="360"></circle></svg>
+      </div>
+      <div class="loader-text inline-block">CampusDev</div>
+    </div>
+  </div>
+
+  <!-- Visuals -->
+  <div class="bg"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="nav__logo">
+      <img src="logo.jpg" alt="CampusDev Logo">
+    </div>
+
+    <h1>CampusDev Beta</h1>
+
+    <!-- Internationalization -->
+    <div class="language-switch-container">
+      <label class="switch-button" for="switch">
+        <div class="switch-outer">
+          <input id="switch" type="checkbox">
+          <div class="button">
+            <span class="button-toggle"></span>
+            <span class="button-indicator"></span>
+          </div>
+        </div>
+      </label>
+      <span class="language-label">ENG/BG</span>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="nav__menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forums.html">Forums</a></li>
+      <li><a href="kafeto.html">Cafeteria</a></li>
+      <li id="nav-login" style="display: none;"><a href="RegistrationContactForm.html">Login/Sign Up</a></li>
+      <li id="nav-profile"><a href="profile.html">Profile</a></li>
+    </ul>
+  </nav>
+
+  <main class="profile-container">
+    <div class="profile-layout">
+      <!-- SIDEBAR -->
+      <aside class="profile-sidebar">
+        <div class="profile-card">
+          <img src="logo.jpg" class="profile-avatar">
+          <h2 class="profile-name">Gabriel</h2>
+          <p class="profile-role">Student</p>
+        </div>
+
+        <ul class="profile-menu">
+          <li><a href="profile.html" class="menu-item">Profile</a></li>
+          <li><a href="messages.html" class="menu-item active">Messages</a></li>
+          <li><a href="settings.html" class="menu-item">Settings</a></li>
+          <li><a href="#" class="menu-item logout" onclick="logout()">Logout</a></li>
+        </ul>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <div class="profile-content">
+        <div class="messages-container">
+          <div class="messages-header">
+            <h2>Messages</h2>
+            <input type="text" placeholder="Search conversations..." class="search-input">
+          </div>
+
+          <div class="messages-list">
+            <div class="message-item active">
+              <img src="logo.jpg" class="message-avatar">
+              <div class="message-info">
+                <h4>John Doe</h4>
+                <p>Hey! How is the project going?</p>
+                <span class="message-time">2 min ago</span>
+              </div>
+            </div>
+
+            <div class="message-item">
+              <img src="logo.jpg" class="message-avatar">
+              <div class="message-info">
+                <h4>Sarah Smith</h4>
+                <p>Thanks for the help with the assignment!</p>
+                <span class="message-time">1 hour ago</span>
+              </div>
+            </div>
+
+            <div class="message-item">
+              <img src="logo.jpg" class="message-avatar">
+              <div class="message-info">
+                <h4>Study Group</h4>
+                <p>Meeting at 5 PM in the library</p>
+                <span class="message-time">3 hours ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="message-thread">
+          <div class="thread-header">
+            <img src="logo.jpg" class="thread-avatar">
+            <div>
+              <h3>John Doe</h3>
+              <p>@johndoe • Active now</p>
+            </div>
+          </div>
+
+          <div class="messages-content">
+            <div class="message-bubble received">
+              <p>Hey! How is the project going?</p>
+              <span class="bubble-time">2 min ago</span>
+            </div>
+
+            <div class="message-bubble sent">
+              <p>It's going well! Making good progress on the backend.</p>
+              <span class="bubble-time">1 min ago</span>
+            </div>
+
+            <div class="message-bubble received">
+              <p>That's great! Let me know if you need any help</p>
+              <span class="bubble-time">30 sec ago</span>
+            </div>
+          </div>
+
+          <div class="message-input">
+            <input type="text" placeholder="Type a message...">
+            <button>Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><span>© 2026 CampusDev. All rights reserved.</span></p>
+      <p><span>Built by students for students.</span> <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a></p>
+      <p><span>Follow us on</span> <a href="https://github.com/garidesnail/campusDev">GitHub</a>, <a href="https://www.instagram.com/k3sk1._/">Instagram</a>.</p>
+    </div>
+  </footer>
+
+<!-- Logic -->
+<script src="script.js"></script>
+<script>
+function logout(){
+  localStorage.removeItem("user");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

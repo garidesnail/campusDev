@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CampusDev Profile - Manage your account and connect with students.">
+  <link rel="icon" type="image/png" href="logo.jpg">
+  <title>Profile | CampusDev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet">
+  <link rel="stylesheet" href="campusDev.css">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader">
+        <svg class="spin" viewBox="0 0 100 100"><circle class="dash" cx="50" cy="50" r="45" pathLength="360"></circle></svg>
+      </div>
+      <div class="loader-text inline-block">CampusDev</div>
+    </div>
+  </div>
+
+  <!-- Visuals -->
+  <div class="bg"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="nav__logo">
+      <img src="logo.jpg" alt="CampusDev Logo">
+    </div>
+
+    <h1>CampusDev Beta</h1>
+
+    <!-- Internationalization -->
+    <div class="language-switch-container">
+      <label class="switch-button" for="switch">
+        <div class="switch-outer">
+          <input id="switch" type="checkbox">
+          <div class="button">
+            <span class="button-toggle"></span>
+            <span class="button-indicator"></span>
+          </div>
+        </div>
+      </label>
+      <span class="language-label">ENG/BG</span>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="nav__menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forums.html">Forums</a></li>
+      <li><a href="kafeto.html">Cafeteria</a></li>
+      <li id="nav-login" style="display: none;"><a href="RegistrationContactForm.html" data-i18n="login-link">Login/Sign Up</a></li>
+      <li id="nav-profile"><a href="profile.html">Profile</a></li>
+    </ul>
+  </nav>
+
+  <main class="profile-container">
+    <div class="profile-layout">
+      <!-- SIDEBAR -->
+      <aside class="profile-sidebar">
+        <div class="profile-card">
+          <img src="logo.jpg" class="profile-avatar">
+          <h2 class="profile-name">Gabriel</h2>
+          <p class="profile-role">Student</p>
+        </div>
+
+        <ul class="profile-menu">
+          <li><a href="profile.html" class="menu-item active">Profile</a></li>
+          <li><a href="messages.html" class="menu-item">Messages</a></li>
+          <li><a href="settings.html" class="menu-item">Settings</a></li>
+          <li><a href="#" class="menu-item logout" onclick="logout()">Logout</a></li>
+        </ul>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <div class="profile-content">
+        <div class="post-box">
+          <textarea placeholder="Share something..."></textarea>
+          <button class="post-btn">Post</button>
+        </div>
+
+        <div class="post">
+          <div class="post-header">
+            <img src="logo.jpg" class="post-avatar">
+            <div>
+              <h3>Gabriel</h3>
+              <span class="post-time">2 hours ago</span>
+            </div>
+          </div>
+          <p>Just joined CampusDev 🚀</p>
+        </div>
+
+        <div class="post">
+          <div class="post-header">
+            <img src="logo.jpg" class="post-avatar">
+            <div>
+              <h3>Gabriel</h3>
+              <span class="post-time">1 day ago</span>
+            </div>
+          </div>
+          <p>Working on my first project!</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><span>© 2026 CampusDev. All rights reserved.</span></p>
+      <p><span>Built by students for students.</span> <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a></p>
+      <p><span>Follow us on</span> <a href="https://github.com/garidesnail/campusDev">GitHub</a>, <a href="https://www.instagram.com/k3sk1._/">Instagram</a>.</p>
+    </div>
+  </footer>
+
+<!-- Logic -->
+<script src="script.js"></script>
+<script>
+function logout(){
+  localStorage.removeItem("user");
+  // Update nav on other pages
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
